@@ -1,0 +1,111 @@
+<div class="container">
+	
+<div class="row">
+	<div class="col-md-9"> 
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+		  <li role="presentation" class="active"><a href="#home" id="homeTab" aria-controls="home" role="tab" data-toggle="tab">Current Weather</a></li>
+		  <li role="presentation" ng-click="showForecast()"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Forecast</a></li>
+		  <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Credit</a></li>
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+		  <div role="tabpanel" class="tab-pane active" id="home">
+		  	<div class="col-md-12">
+		  		<div class="col-md-4">
+			  		<h3>{{weatherData.name}}, India </h3>
+			  		<h2> <img src="http://openweathermap.org/img/w/{{(weatherData.weather)[0].icon}}.png" data-toggle="tooltip" data-placement="top" title="{{(weatherData.weather)[0].description}}"> {{weatherData.main.temp}} °C</h2>
+		  		</div>
+		  		<div class="col-md-8 mt-24">
+		  			
+		  			<table class="table table-striped summary-table">
+		  			    </thead>
+		  			    <tbody>
+		  			      <tr>
+		  			        <th>Wind</th>
+		  			        
+		  			        <td>{{weatherData.wind.speed}} m/s</td>
+		  			      </tr>
+		  			      <tr>
+		  			        <th>Humidity</th>
+		  			        <td>{{weatherData.main.humidity}} %</td>
+		  			      </tr>
+		  			      <tr>
+		  			        <th>Pressure</th>
+		  			        
+		  			        <td>{{weatherData.main.pressure}} hpa</td>
+		  			      </tr>
+		  			      <tr>
+		  			        <th>Sky</th>
+		  			        
+		  			        <td>{{(weatherData.weather)[0].description}} </td>
+		  			      </tr>
+		  			      <tr>
+		  			        <th>Sunrise</th>
+		  			        <td>{{weatherData.sys.sunrise*1000 | date:'HH:mm:ss'}}</td>
+		  			      </tr>
+		  			      <tr>
+		  			        <th>Sunset</th>
+		  			        <td>{{weatherData.sys.sunset*1000 | date:'HH:mm:ss'}}</td>
+		  			      </tr>
+		  			    </tbody>
+		  			  </table>
+
+
+		  		</div>
+		  	</div>
+		  </div>
+		  <div role="tabpanel" class="tab-pane" id="profile">
+		  	<div class="col-md-12">
+		  		<canvas id="myChart" width="847" height="450"></canvas>
+		  	</div>
+
+		  </div>
+		  <div role="tabpanel" class="tab-pane" id="messages">
+		  	
+		  	<div class="row mt-45 vdivide">
+		  	    <div class="col-sm-2 col-md-2">
+		  	        <img src="https://scontent-sit4-1.xx.fbcdn.net/v/t1.0-9/383962_247285838672218_528733962_n.jpg?oh=37acbd69c26074e8f2744d67411f1284&oe=57B24E66"
+		  	        alt="" class="img-rounded img-responsive" />
+		  	    </div>
+		  	    <div class="col-sm-4 col-md-4">
+		  	        <blockquote>
+		  	            <p>Gaurav Srivastava</p> <small><cite title="Source Title">Bangalore, India  <i class="glyphicon glyphicon-map-marker"></i></cite></small>
+		  	        </blockquote>
+		  	        <p> <i class="glyphicon glyphicon-envelope"></i> gaurav.fgiet08@gmail.com
+		  	            <br
+		  	            /> <i class="glyphicon glyphicon-briefcase"></i> Glydel Tech Pvt Ltd
+		  	            <br /></p>
+		  	    </div>
+		  	    <div class="col-md-6">
+		  	    <div class="col-md-12">
+			  	    <a href="https://www.facebook.com/genius.joker" target="_BLANK" class="button facebook"><span><i class="fa fa-facebook"></i></span><p>Facebook</p></a>		  	    	
+		  	    </div>
+
+  	      	    <div class="col-md-12">
+  	    	  	    <a href="https://in.linkedin.com/in/gaurav-srivastava-743ba0b5" class="button linkedin" target="_BLANK"><span><i class="fa fa-linkedin"></i></span><p>Linkedin</p></a>		  	    	
+  	      	    </div>
+
+  	      	    <div class="col-md-12">
+  	    	  	    <a href="https://github.com/gsrivastava08" class="button github" target="_BLANK"><span><i class="fa fa-github"></i></span><p>Github</p></a>	  	    	
+  	      	    </div>
+
+		  	    </div>
+		  	</div>
+
+		  </div>
+		</div>
+	</div>
+	<div class="col-md-3 mt-12"> 
+		<div class="col-md-12 city-list">Popular Cities</div>
+		<div class="col-md-12">
+			<div class="list-group" id="cityList">
+			  <a ng-repeat="city in cityList" href="#" class="list-group-item" ng-click="loadWeatherData(city)">{{city}}</a>
+			</div>
+		</div>
+	</div>	
+</div>
+
+
+</div>
