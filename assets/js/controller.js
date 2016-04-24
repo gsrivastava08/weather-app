@@ -5,6 +5,7 @@ app.controller('myCtrl', [ "$scope", "$http", "$filter", function($scope, $http,
 	$scope.weatherData = {};
 	$scope.forecastData = {};
     $scope.currentDate = new Date().getTime();
+    $scope.chartInst = null;
     // App init
     $scope.init = function(){
     	 $scope.loadWeatherData('Bangalore');
@@ -35,6 +36,10 @@ app.controller('myCtrl', [ "$scope", "$http", "$filter", function($scope, $http,
     }
 
     $scope.renderGraph = function(){
+
+        if($scope.chartInst != null)
+            $scope.chartInst.destroy();
+        
     	var ctx = document.getElementById("myChart").getContext("2d");
 
     	    var options = {
@@ -108,7 +113,7 @@ app.controller('myCtrl', [ "$scope", "$http", "$filter", function($scope, $http,
     	    ]
     	};
 
-    	var myLineChart = new Chart(ctx).Line(data, options);
+    	$scope.chartInst = new Chart(ctx).Line(data, options);
 
     } 
 
