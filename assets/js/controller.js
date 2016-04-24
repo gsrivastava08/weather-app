@@ -1,4 +1,4 @@
-app.controller('myCtrl', function($scope, $http, $filter) {
+app.controller('myCtrl', [ "$scope", "$http", "$filter", function($scope, $http, $filter) {
 
 	$scope.cityList = ['Bangalore', 'Kanpur', 'Lucknow', 'Raebareli', 'Delhi', 'Noida', 'Pune', 'Chandigarh'];
 	$scope.activeCity = 'Bangalore';
@@ -114,4 +114,4 @@ app.controller('myCtrl', function($scope, $http, $filter) {
 
     $scope.init();
 
-});
+}]);
